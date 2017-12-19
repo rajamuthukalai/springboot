@@ -5,6 +5,7 @@ import com.billtracker.repository.BiilerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -13,11 +14,6 @@ public class BillerController {
 
 	@Autowired
 	BiilerRepository repository;
-	
-	@GetMapping(path="/")
-	public String test() {
-		return "success";
-	}
 
 
 	@GetMapping(path="/billers")
@@ -27,26 +23,27 @@ public class BillerController {
 	}
 
 	@GetMapping(path="/biller/{id}")
-	public Biller getBillers(@PathVariable Long id) {
+	public Biller getBillers(@PathVariable(required =true) Long id) {
 
 		return repository.findOne(id);
 	}
 
 
 	@PutMapping(path="/biller/{id}")
-	public Biller updateBillers(@RequestBody Biller biller) {
+	public Biller updateBillers(@Valid  @RequestBody Biller biller) {
 
 		return repository.save(biller);
 	}
 
 	@DeleteMapping(path="/biller/{id}")
 	public void deleteBiller(@PathVariable Long id) {
-		 repository.delete(id);
+
+		repository.delete(id);
 	}
 
 
 	@PostMapping(path="/biller")
-	public Biller createBillers(@RequestBody Biller biller) {
+	public Biller createBillers(@Valid @RequestBody Biller biller) {
 
 		return repository.save(biller);
 	}

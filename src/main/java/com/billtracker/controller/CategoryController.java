@@ -6,6 +6,7 @@ import com.billtracker.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -31,7 +32,7 @@ public class CategoryController {
 
 
     @PutMapping(path="/category/{id}")
-    public Category updateCategory(@RequestBody Category category) {
+    public Category updateCategory(@Valid @RequestBody Category category) {
 
         return repository.save(category);
     }
@@ -43,7 +44,7 @@ public class CategoryController {
 
 
     @PostMapping(path="/category")
-    public Category createCategory(@RequestBody Category category) {
+    public Category createCategory(@Valid @RequestBody Category category) {
 
         return repository.save(category);
     }
