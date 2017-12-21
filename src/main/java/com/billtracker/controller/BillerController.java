@@ -9,6 +9,8 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@RequestMapping(path = "/api")
+@CrossOrigin("*")
 public class BillerController {
 
 

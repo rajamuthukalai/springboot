@@ -13,6 +13,8 @@ import java.util.List;
  * Created by kgtl075 on 17/12/17.
  */
 @RestController
+@RequestMapping(path = "/api")
+@CrossOrigin("*")
 public class CategoryController {
 
     @Autowired
