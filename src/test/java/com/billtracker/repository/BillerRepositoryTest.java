@@ -30,7 +30,7 @@ public class BillerRepositoryTest {
         // given
         Biller biller = new Biller();
        // biller.setId(1L);
-        biller.setServiceProvider("vodofone");
+        biller.setName("vodofone");
 
         entityManager.persist(biller);
         entityManager.flush();
@@ -39,7 +39,7 @@ public class BillerRepositoryTest {
         List<Biller> found = billerRepository.findAll();
 
         // then
-        assertThat(found.get(0).getServiceProvider())
-                .isEqualTo(biller.getServiceProvider());
+        assertThat(found.get(0).getName())
+                .isEqualTo(biller.getName());
     }
 }

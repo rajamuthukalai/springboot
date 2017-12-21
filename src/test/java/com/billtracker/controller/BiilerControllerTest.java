@@ -36,7 +36,7 @@ public class BiilerControllerTest {
     public void setUp() {
         Biller biller = new Biller();
         biller.setId(1L);
-        biller.setServiceProvider("vodofone");
+        biller.setName("vodofone");
 
         List<Biller> allBillers = Arrays.asList(biller);
 
@@ -50,21 +50,21 @@ public class BiilerControllerTest {
     public void testGetAllBillers()
             throws Exception {
 
-        mvc.perform(get("/billers")
+        mvc.perform(get("/api/billers")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].serviceProvider", is("vodofone")));
+                .andExpect(jsonPath("$[0].name", is("vodofone")));
     }
 
     @Test
     public void testGetBiller()
             throws Exception {
 
-        mvc.perform(get("/biller/1")
+        mvc.perform(get("/api/biller/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                // .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$.serviceProvider", is("vodofone")));
+                .andExpect(jsonPath("$.name", is("vodofone")));
     }
 }

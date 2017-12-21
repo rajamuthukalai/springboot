@@ -22,7 +22,7 @@ public @Data class Biller {
 
     @NotNull
     @Length(max = 20)
-    private String serviceProvider;
+    private String name ;
 
 
 }

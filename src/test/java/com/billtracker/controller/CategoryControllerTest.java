@@ -54,7 +54,7 @@ public class CategoryControllerTest {
     public void testGetAllCategories()
             throws Exception {
 
-        mvc.perform(get("/categories")
+        mvc.perform(get("/api/categories")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
@@ -65,7 +65,7 @@ public class CategoryControllerTest {
     public void testGetBiller()
             throws Exception {
 
-        mvc.perform(get("/category/1")
+        mvc.perform(get("/api/category/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 // .andExpect(jsonPath("$", hasSize(1)))
