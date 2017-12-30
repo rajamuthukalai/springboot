@@ -12,7 +12,8 @@ import java.util.Date;
 public @Data class Bill {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="billSeq")
+    @SequenceGenerator(sequenceName="bill_seq", name = "billSeq")
     private Long id;
 
 

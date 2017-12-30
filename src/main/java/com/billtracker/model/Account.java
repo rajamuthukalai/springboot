@@ -1,13 +1,16 @@
 package com.billtracker.model;
 
-import lombok.Data;
-
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Size;
+import lombok.Data;
 
 /**
  * Created by kgtl075 on 17/12/17.
@@ -15,11 +18,13 @@ import javax.validation.constraints.Size;
 @Entity
 public @Data class Account {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id    
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="accountSeq")
+    @SequenceGenerator(sequenceName="account_seq", name = "accountSeq")    
     private Long Id;
 
     @NotNull
+    @Column(unique=true)
     private String accountNumber;
 
 
