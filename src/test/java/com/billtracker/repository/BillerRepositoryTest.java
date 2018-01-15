@@ -1,7 +1,10 @@
 package com.billtracker.repository;
 
 
-import com.billtracker.model.Biller;
+import static org.assertj.core.api.Java6Assertions.assertThat;
+
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +12,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
-
-import static org.assertj.core.api.Java6Assertions.assertThat;
+import com.billtracker.model.Biller;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -26,11 +27,10 @@ public class BillerRepositoryTest {
 
 
     @Test
-    public void testBiilerInsert() {
+    public void testBiilerInsert() {    	
         // given
         Biller biller = new Biller();
-       // biller.setId(1L);
-        biller.setName("vodofone");
+        biller.setName("Test Biller");
 
         entityManager.persist(biller);
         entityManager.flush();
@@ -39,7 +39,6 @@ public class BillerRepositoryTest {
         List<Biller> found = billerRepository.findAll();
 
         // then
-        assertThat(found.get(0).getName())
-                .isEqualTo(biller.getName());
+        assertThat(found.contains(biller));
     }
 }

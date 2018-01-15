@@ -1,4 +1,4 @@
-package com.billtracker.configuration;
+package com.billtracker.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,9 +15,8 @@ public class SampleDataInsert implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-
-        Biller biller = new Biller();
+       /* Biller biller = new Biller();
         biller.setName("vodofone");
-        billerRepository.save(biller);
+        billerRepository.save(biller);*/
     }
 }
